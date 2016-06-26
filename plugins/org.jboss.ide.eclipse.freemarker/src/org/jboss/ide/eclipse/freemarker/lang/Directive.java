@@ -158,6 +158,12 @@ public enum Directive {
 			return new ElseIfDirective(itemSet);
 		}
 	},
+	ELSEIF_CC(Keyword.ELSEIF_CC, false) {
+		@Override
+		public Item createModelItem(ItemSet itemSet) {
+			return new ElseIfDirective(itemSet);
+		}
+	},
 	ELSE(Keyword.ELSE, false) {
 		@Override
 		public Item createModelItem(ItemSet itemSet) {
@@ -236,6 +242,18 @@ public enum Directive {
 			return new GenericNestableEndDirective(itemSet, getKeyword().toString());
 		}
 	},
+	FOREACH_CC(Keyword.FOREACH_CC, false) {
+		@Override
+		public Item createModelItem(ItemSet itemSet) {
+			return new GenericNestableDirective(itemSet, getKeyword().toString(), "foreach.png"); //$NON-NLS-1$;
+		}
+	},
+	FOREACH_CC_END(Keyword.FOREACH_CC, true) {
+		@Override
+		public Item createModelItem(ItemSet itemSet) {
+			return new GenericNestableEndDirective(itemSet, getKeyword().toString());
+		}
+	},
     ATTEMPT(Keyword.ATTEMPT, false) {
         @Override
         public Item createModelItem(ItemSet itemSet) {
@@ -284,6 +302,18 @@ public enum Directive {
             return new GenericNestableEndDirective(itemSet, getKeyword().toString());
         }
     },
+    AUTOESC_CC(Keyword.AUTOESC_CC, false) {
+        @Override
+        public Item createModelItem(ItemSet itemSet) {
+            return new GenericNestableDirective(itemSet, getKeyword().toString());
+        }
+    },
+    AUTOESC_CC_END(Keyword.AUTOESC_CC, true) {
+        @Override
+        public Item createModelItem(ItemSet itemSet) {
+            return new GenericNestableEndDirective(itemSet, getKeyword().toString());
+        }
+    },
     NOAUTOESC(Keyword.NOAUTOESC, false) {
         @Override
         public Item createModelItem(ItemSet itemSet) {
@@ -291,6 +321,18 @@ public enum Directive {
         }
     },
     NOAUTOESC_END(Keyword.NOAUTOESC, true) {
+        @Override
+        public Item createModelItem(ItemSet itemSet) {
+            return new GenericNestableEndDirective(itemSet, getKeyword().toString());
+        }
+    },
+    NOAUTOESC_CC(Keyword.NOAUTOESC_CC, false) {
+        @Override
+        public Item createModelItem(ItemSet itemSet) {
+            return new GenericNestableDirective(itemSet, getKeyword().toString());
+        }
+    },
+    NOAUTOESC_CC_END(Keyword.NOAUTOESC_CC, true) {
         @Override
         public Item createModelItem(ItemSet itemSet) {
             return new GenericNestableEndDirective(itemSet, getKeyword().toString());
@@ -320,6 +362,18 @@ public enum Directive {
             return new GenericNestableEndDirective(itemSet, getKeyword().toString());
         }
     },
+    NOESCAPE_CC(Keyword.NOESCAPE_CC, false) {
+        @Override
+        public Item createModelItem(ItemSet itemSet) {
+            return new GenericNestableDirective(itemSet, getKeyword().toString());
+        }
+    },
+    NOESCAPE_CC_END(Keyword.NOESCAPE_CC, true) {
+        @Override
+        public Item createModelItem(ItemSet itemSet) {
+            return new GenericNestableEndDirective(itemSet, getKeyword().toString());
+        }
+    },
     NOPARSE(Keyword.NOPARSE, false) {
         @Override
         public Item createModelItem(ItemSet itemSet) {
@@ -327,6 +381,18 @@ public enum Directive {
         }
     },
     NOPARSE_END(Keyword.NOPARSE, true) {
+        @Override
+        public Item createModelItem(ItemSet itemSet) {
+            return new GenericNestableEndDirective(itemSet, getKeyword().toString());
+        }
+    },
+    NOPARSE_CC(Keyword.NOPARSE_CC, false) {
+        @Override
+        public Item createModelItem(ItemSet itemSet) {
+            return new GenericNestableDirective(itemSet, getKeyword().toString());
+        }
+    },
+    NOPARSE_CC_END(Keyword.NOPARSE_CC, true) {
         @Override
         public Item createModelItem(ItemSet itemSet) {
             return new GenericNestableEndDirective(itemSet, getKeyword().toString());

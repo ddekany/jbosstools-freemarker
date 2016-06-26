@@ -45,6 +45,7 @@ public enum Keyword {
 	IF,
 	ELSE,
 	ELSEIF,
+	ELSEIF_CC("elseIf"), //$NON-NLS-1$
 	SWITCH,
 	CASE,
 	DEFAULT,
@@ -61,16 +62,21 @@ public enum Keyword {
 	IN,
 	USING,
 	FOREACH,
+	FOREACH_CC("forEach"), //$NON-NLS-1$
 	ATTEMPT,
 	RECOVER,
 	VISIT,
 	RECURSE,
 	FALLBACK,
 	AUTOESC,
+	AUTOESC_CC("autoEsc"), //$NON-NLS-1$
     NOAUTOESC,
+    NOAUTOESC_CC("noAutoEsc"), //$NON-NLS-1$,
 	ESCAPE,
 	NOESCAPE,
+	NOESCAPE_CC("noEscape"), //$NON-NLS-1$
 	NOPARSE,
+	NOPARSE_CC("noParse"), //$NON-NLS-1$
 	ITEMS,
 	SEP,
     FLUSH,
