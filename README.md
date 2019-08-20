@@ -1,40 +1,13 @@
-# The FreeMarker Tools project
+# FreeMarker IDE Eclipse plugin
 
 ## Summary
 
-FreeMarker Tools provide an editor for FreeMarker .ftl files with code completion and syntax highlighting.
+This is an Eclipse pluging that provides and editor for [Apache FreeMarker](https://freemarker.apache.org/) `.ftl` (and `.ftlh` etc.) files with code completion and syntax highlighting.
 
-**NOTE: This project is deprecated, and has been removed from JBoss Tools as of 4.5.3.**
+This project was originally developed as part of [JBoss Tools](http://jboss.org/tools), but as of JBoss Tools 4.5.3 JBoss has removed it.
+Thus, it was forked for further maintenance.
 
-## Install
-
-_FreeMarker Tools_ is part of [JBoss Tools](http://jboss.org/tools) from
-which it can be [downloaded and installed](http://jboss.org/tools/download)
-on its own or together with the full JBoss Tools distribution.
-
-## Get the code
-
-The easiest way to get started with the code is to [create your own fork](http://help.github.com/forking/), 
-and then clone your fork:
-
-    $ git clone git@github.com:<you>/jbosstools-freemarker.git
-    $ cd jbosstools-freemarker
-    $ git remote add upstream git://github.com/jbosstools/jbosstools-freemarker.git
-	
-At any time, you can pull changes from the upstream and merge them onto your master:
-
-    $ git checkout master               # switches to the 'master' branch
-    $ git pull upstream master          # fetches all 'upstream' changes and merges 'upstream/master' onto your 'master' branch
-    $ git push origin                   # pushes all the updates to your fork, which should be in-sync with 'upstream'
-
-The general idea is to keep your 'master' branch in-sync with the
-'upstream/master'.
-
-## Building FreeMarker Tools
-
-To build _FreeMarker Tools_ requires specific versions of Java and
-Maven. Also, there is some Maven setup. The [How to Build JBoss Tools with Maven 3](https://community.jboss.org/wiki/HowToBuildJBossToolsWithMaven3)
-document will guide you through that setup.
+## Building
 
 This command will run the build:
 
@@ -44,41 +17,31 @@ If you just want to check if things compiles/builds you can run:
 
     $ mvn clean verify -DskipTest=true
 
-But *do not* push changes without having the new and existing unit tests pass!
- 
-## Contribute fixes and features
+While this project is not part of JBoss Tools anymore, this is still possibly relevant:
+[How to Build JBoss Tools with Maven 3](https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/how_to_build_jbosstools_4.adoc)
 
-_FreeMarker Tools_ is open source, and we welcome anybody that wants to
-participate and contribute!
+## Install
 
-If you want to fix a bug or make any changes, please log an issue in
-the [JBoss Tools JIRA](https://issues.jboss.org/browse/JBIDE)
-describing the bug or new feature and give it a component type of
-`freemarker`. Then we highly recommend making the changes on a
-topic branch named with the JIRA issue number. For example, this
-command creates a branch for the JBIDE-1234 issue:
+If the latest version is not on Eclipse Marketplace, then build it like above, and then in Eclipse
+"Help" / "Install New Software..." / "Add...", and point to `jbosstools-freemarker\site\target\repository`,
+then select "FreeMarker IDE".
 
-	$ git checkout -b jbide-1234
+## Develop
 
-After you're happy with your changes and a full build (with unit
-tests) runs successfully, commit your changes on your topic branch
-(with good comments). Then it's time to check for any recent changes
-that were made in the official repository:
+1. It's recommended to download and install "Eclipse for committers" instead of a regular Eclipse.
+2. Install plugins needed for running the tests:
+   1. `jbosstools-base`:
+      - Get it from <https://github.com/jbosstools/jbosstools-base>.
+      - Build it: `mvn verify -DskipTests=true`
+      - In Ecpise "Install new software" from location, `jbosstools-base\site\target\repository`, and select "JBoss Tools Test Framework"
+   2. `jbosstools-locus`:
+      - Get it from <https://github.com/jbosstools/jbosstools-locus>.
+      - Similar procedure as with jbosstools-base. Install from the `site/target/repository`, select "Mockito Plug-in"
+3. Add a default "API Baseline" in Eclipse under "Window" / "Preferences".
+4. Eclipse: Import `jbosstools-freemarker` as Eclipse projects, NOT as Maven project (Maven is only to build in CI or from command line)!
+5. Eclipse will complain about some lines of `pom.xml`; on the same place it will offer installing the missing Maven connectors (Tycho, etc.), so do that.
 
-	$ git checkout master               # switches to the 'master' branch
-	$ git pull upstream master          # fetches all 'upstream' changes and merges 'upstream/master' onto your 'master' branch
-	$ git checkout jbide-1234           # switches to your topic branch
-	$ git rebase master                 # reapplies your changes on top of the latest in master
-	                                      (i.e., the latest from master will be the new base for your changes)
-
-If the pull grabbed a lot of changes, you should rerun your build with
-tests enabled to make sure your changes are still good.
-
-You can then push your topic branch and its changes into your public fork repository:
-
-	$ git push origin jbide-1234         # pushes your topic branch into your public fork of FreeMarker Tools
-
-And then [generate a pull-request](http://help.github.com/pull-requests/) where we can
-review the proposed changes, comment on them, discuss them with you,
-and if everything is good merge the changes right into the official
-repository.
+Note:
+On Mars, if after running JUnit tests it starts to log "AERI failed with an error." stack traces in infinite loop, this
+to `eclipse.ini`: `-Dorg.eclipse.epp.logging.aeri.ui.skipReports=true`
+(See also: <https://bugs.eclipse.org/bugs/show_bug.cgi?id=488868>)
