@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
 	<description>To install these features, point Eclipse at this site.</description>
-	<!-- JBoss Tools freemarker Nightly Build Update Site -->
-	<category-def label="JBoss Tools freemarker Nightly Build Update Site" name="JBoss Tools freemarker Nightly Build Update Site">
-		<description>JBoss Tools freemarker Nightly Build Update Site: contains all features in this build.</description>
+	<category-def label="FreeMarker IDE Update Site" name="FreeMarker IDE Update Site">
+		<description>FreeMarker IDE Update Site for the maintenance fork of the discontinued FreeMarker plugin in JBoss Tools</description>
 	</category-def>
-	<feature id="org.jboss.ide.eclipse.freemarker.feature"><category name="JBoss Tools freemarker Nightly Build Update Site"/></feature>
-	<feature id="org.jboss.ide.eclipse.freemarker.test.feature"><category name="JBoss Tools freemarker Nightly Build Update Site"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.feature"><category name="FreeMarker IDE plugin"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.test.feature"><category name="FreeMarker IDE plugin - tests"/></feature>
 	<!-- Sources -->
-	<feature id="org.jboss.ide.eclipse.freemarker.feature.source"><category name="JBoss Tools freemarker Nightly Build Update Site"/></feature>
-	<feature id="org.jboss.ide.eclipse.freemarker.test.feature.source"><category name="JBoss Tools freemarker Nightly Build Update Site"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.feature.source"><category name="FreeMarker IDE plugin - source code"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.test.feature.source"><category name="FreeMarker IDE plugin - tests source code"/></feature>
 </site>
