@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is an Eclipse pluging that provides and editor for [Apache FreeMarker](https://freemarker.apache.org/) `.ftl` (and `.ftlh` etc.) files with code completion and syntax highlighting.
+This is an Eclipse pluging that provides and editor for [Apache FreeMarker](https://freemarker.apache.org/) `.ftl` (and `.ftlh` etc.) files with error markers, syntax highlighting, and some code completion.
 
 This project was originally developed as part of [JBoss Tools](http://jboss.org/tools), but as of JBoss Tools 4.5.3 JBoss has removed it.
 Thus, it was forked for further maintenance.
@@ -45,3 +45,34 @@ Note:
 On Mars, if after running JUnit tests it starts to log "AERI failed with an error." stack traces in infinite loop, this
 to `eclipse.ini`: `-Dorg.eclipse.epp.logging.aeri.ui.skipReports=true`
 (See also: <https://bugs.eclipse.org/bugs/show_bug.cgi?id=488868>)
+
+## Release
+
+Maven release plugin didn't work for some reason, and anyway we need to change OSGi versions in MANIFEST.MF-s too, so I just do this:
+
+```
+releaseVersion='1.5.303'
+nextVersion='1.5.304'
+
+find -type f -name "pom.xml" -not -path '*/target/*' -exec sed -Ei 's/('${releaseVersion//./\\.}')-SNAPSHOT/\1/g' {} \;
+find -type f \( -name "MANIFEST.MF" -o -name "feature.xml" -o -name "category.xml" \) -not -path '*/target/*' -exec sed -Ei 's/('${releaseVersion//./\\.}')\.qualifier/\1/g' {} \;
+
+git add .
+git commit -m "Updated version for release"
+
+# See if i still works:
+mvn clean verify
+
+# Upload to Bintray
+../bintray-uploader/upload-bintray-repo-level.sh
+
+git tag -a "v${releaseVersion}" -m "Tagged release"
+git push --follow-tags
+
+find -type f -name "pom.xml" -not -path '*/target/*' -exec sed -Ei 's/'${releaseVersion//./\\.}'/'$nextVersion'-SNAPSHOT/g' {} \;
+find -type f \( -name "MANIFEST.MF" -o -name "feature.xml" -o -name "category.xml" \) -not -path '*/target/*' -exec sed -Ei 's/'${releaseVersion//./\\.}'/'$nextVersion'.qualifier/g' {} \;
+
+git add .
+git commit -m "Updated version for development"
+gut push
+```
