@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
 	<description>To install these features, point Eclipse at this site.</description>
-	<category-def label="FreeMarker IDE Update Site" name="FreeMarker IDE Update Site">
-		<description>FreeMarker IDE Update Site for the maintenance fork of the discontinued FreeMarker plugin in JBoss Tools</description>
+	<category-def label="FreeMarker IDE" name="freemarker.ide">
+		<description>FreeMarker IDE - A maintenance fork of the discontinued FreeMarker plugin in JBoss Tools</description>
 	</category-def>
-	<feature id="org.jboss.ide.eclipse.freemarker.feature"><category name="FreeMarker IDE plugin"/></feature>
-	<feature id="org.jboss.ide.eclipse.freemarker.test.feature"><category name="FreeMarker IDE plugin - tests"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.feature" url="features/org.jboss.ide.eclipse.freemarker.feature_1.5.303.jar" version="1.5.303"><category name="freemarker.ide"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.test.feature" url="features/org.jboss.ide.eclipse.freemarker.test.feature_1.5.303.jar" version="1.5.303"><category name="freemarker.ide"/></feature>
 	<!-- Sources -->
-	<feature id="org.jboss.ide.eclipse.freemarker.feature.source"><category name="FreeMarker IDE plugin - source code"/></feature>
-	<feature id="org.jboss.ide.eclipse.freemarker.test.feature.source"><category name="FreeMarker IDE plugin - tests source code"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.feature.source" url="features/org.jboss.ide.eclipse.freemarker.feature.source_1.5.303.jar" version="1.5.303"><category name="freemarker.ide"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.test.feature.source" url="features/org.jboss.ide.eclipse.freemarker.test.feature.source_1.5.303.jar" version="1.5.303"><category name="freemarker.ide"/></feature>
 </site>
