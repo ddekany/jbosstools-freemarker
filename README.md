@@ -60,7 +60,7 @@ find -type f \( -name "MANIFEST.MF" -o -name "feature.xml" -o -name "category.xm
 git add .
 git commit -m "Updated version for release"
 
-# See if i still works:
+# Build with the release version
 mvn clean verify
 
 # Upload to Bintray
