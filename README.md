@@ -2,10 +2,13 @@
 
 ## Summary
 
-This is an Eclipse pluging that provides and editor for [Apache FreeMarker](https://freemarker.apache.org/) `.ftl` (and `.ftlh` etc.) files with error markers, syntax highlighting, and some code completion.
+*Please note: This is a maintenance fork of the discontinued JBoss Tools FreeMarker plugin, which was developed at JBoss (Red Hat), not by me.*
 
-This project was originally developed as part of [JBoss Tools](http://jboss.org/tools), but as of JBoss Tools 4.5.3 JBoss has removed it.
-Thus, it was forked for further maintenance.
+This is an Eclipse pluging that provides an editor for [Apache FreeMarker](https://freemarker.apache.org/) `.ftl` (and `.ftlh`, `.ftlx`, etc.) files with *syntax error markers* as you type, syntax highlighting (for the template language only), and some code completion.
+
+If you are looking at the fork of user ddekany, then the last released version should be
+[on the Eclipse Marketplace here](https://marketplace.eclipse.org/content/freemarker-ide),
+and also on [the Eclipse update site on Bintray](https://dl.bintray.com/freemarker/freemarker-ide/).
 
 ## Building
 
@@ -66,7 +69,7 @@ mvn clean verify
 # Upload to Bintray
 version=$releaseVersion ../bintray-uploader/upload.sh
 
-git tag -a "v${releaseVersion}" -m "Tagged release"
+git tag -a "v${releaseVersion}" -m "Release"
 git push --follow-tags
 
 find -type f -name "pom.xml" -not -path '*/target/*' -exec sed -Ei 's/'${releaseVersion//./\\.}'/'$nextVersion'-SNAPSHOT/g' {} \;
@@ -76,3 +79,5 @@ git add .
 git commit -m "Updated version for development"
 gut push
 ```
+
+You should also add the new version on the Eclipse Marketplace, [here](https://marketplace.eclipse.org/content/freemarker-ide).
