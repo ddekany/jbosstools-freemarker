@@ -64,7 +64,7 @@ git commit -m "Updated version for release"
 mvn clean verify
 
 # Upload to Bintray
-../bintray-uploader/upload-bintray-repo-level.sh
+version=$releaseVersion ../bintray-uploader/upload.sh
 
 git tag -a "v${releaseVersion}" -m "Tagged release"
 git push --follow-tags

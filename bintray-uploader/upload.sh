@@ -11,8 +11,11 @@ BINTRAY_REPO=freemarker-ide
 BINTRAY_PACKAGE=p2-repository
 
 echo "This will upload/replace Bintray package/version independent files to ${BINTRAY_OWNER}/${BINTRAY_REPO}"
-echo "Enter version:"
-read version
+
+if [[ -z ${version:-} ]]; then
+  echo "Enter version:"
+  read version
+fi
 
 rm -rf repo-template-out
 mkdir repo-template-out
