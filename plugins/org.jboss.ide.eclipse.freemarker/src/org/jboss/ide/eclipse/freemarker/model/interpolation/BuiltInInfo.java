@@ -64,6 +64,8 @@ public enum BuiltInInfo {
     EVAL("eval", FTLType.STRING, FTLType.ANY, false), //$NON-NLS-1$
     /** {@link freemarker.core.ExistenceBuiltins$existsBI */
     EXISTS("exists", new FTLType[] { FTLType.ANY }, FTLType.BOOLEAN, false, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForSequences$filterBI */
+    FILTER("filter", FTLType.SEQUENCE, FTLType.SEQUENCE, true), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForSequences$firstBI */
     FIRST("first", FTLType.SEQUENCE, FTLType.ANY, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForNumbers$floatBI */
@@ -234,6 +236,8 @@ public enum BuiltInInfo {
     LOWER_ABC("lowerAbc", FTLType.NUMBER, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsBasic$lower_caseBI */
     LOWER_CASE("lowerCase", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForSequences$mapBI */
+    MAP("map", FTLType.SEQUENCE, FTLType.SEQUENCE, true), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForMarkupOutputs$markup_stringBI */
     MARKUP_STRING("markupString", FTLType.MARKUP_OUTPUT, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsRegexp$matchesBI */
@@ -300,6 +304,10 @@ public enum BuiltInInfo {
     SUBSTRING("substring", new FTLType[] { FTLType.STRING }, FTLType.STRING, true, true), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsWithParseTimeParameters$switch_BI */
     SWITCH("switch", FTLType.ANY, FTLType.ANY, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForSequences$drop_whileBI */
+    DROP_WHILE("dropWhile", FTLType.SEQUENCE, FTLType.SEQUENCE, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForSequences$take_whileBI */
+    TAKE_WHILE("takeWhile", FTLType.SEQUENCE, FTLType.SEQUENCE, true), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsWithParseTimeParameters$then_BI */
     THEN("then", FTLType.BOOLEAN, FTLType.ANY, true), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForMultipleTypes$dateBI */
@@ -308,6 +316,18 @@ public enum BuiltInInfo {
     TIME_IF_UNKNOWN("timeIfUnknown", FTLType.DATE_LIKE, FTLType.DATE_LIKE, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsBasic$trimBI */
     TRIM("trim", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsBasic$truncateBI */
+    TRUNCATE("truncate", FTLType.STRING, FTLType.STRING, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsBasic$truncate_wBI */
+    TRUNCATE_W("truncateW", FTLType.STRING, FTLType.STRING, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsBasic$truncate_cBI */
+    TRUNCATE_C("truncateC", FTLType.STRING, FTLType.STRING, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsBasic$truncate_mBI */
+    TRUNCATE_M("truncateM", FTLType.STRING, FTLType.STRING, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsBasic$truncate_w_mBI */
+    TRUNCATE_W_M("truncateWM", FTLType.STRING, FTLType.STRING, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsBasic$truncate_c_mBI */
+    TRUNCATE_C_M("truncateCM", FTLType.STRING, FTLType.STRING, true), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsBasic$uncap_firstBI */
     UNCAP_FIRST("uncapFirst", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForNumbers$upper_abcBI */
