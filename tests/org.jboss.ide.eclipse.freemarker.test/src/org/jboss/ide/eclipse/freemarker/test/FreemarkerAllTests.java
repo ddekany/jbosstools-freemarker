@@ -18,6 +18,7 @@ import org.jboss.ide.eclipse.freemarker.editor.test.IncludeHyperlinkDetectorTest
 import org.jboss.ide.eclipse.freemarker.editor.test.PartitionScannerTest;
 import org.jboss.ide.eclipse.freemarker.editor.test.AutoEditStrategyTest;
 import org.jboss.ide.eclipse.freemarker.editor.test.ErrorMarkerTest;
+import org.jboss.ide.eclipse.freemarker.lang.test.LangEnumCompletenessTest;
 import org.jboss.ide.eclipse.freemarker.lang.test.ParserUtilsTest;
 import org.jboss.ide.eclipse.freemarker.model.test.AssignmentDirectiveTest;
 import org.jboss.ide.eclipse.freemarker.model.test.InterpolationTest;
@@ -54,6 +55,9 @@ public class FreemarkerAllTests extends TestCase {
 		suite.addTestSuite(StringLiteralsColoringTest.class);
 		suite.addTestSuite(MultilineColoringTest.class);
 		suite.addTestSuite(EscapedIdentifiersColoringTest.class);
+		
+		suite.addTestSuite(LangEnumCompletenessTest.class);
+		suite.addTestSuite(ParserUtilsTest.class);
 		
 		return suite;
 	}
