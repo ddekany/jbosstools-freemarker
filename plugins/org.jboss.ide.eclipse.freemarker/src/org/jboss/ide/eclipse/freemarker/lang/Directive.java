@@ -116,6 +116,12 @@ public enum Directive {
 			return new GenericDirective(itemSet, "break.png"); //$NON-NLS-1$;
 		}
 	},
+	CONTINUE(Keyword.CONTINUE, false) {
+		@Override
+		public Item createModelItem(ItemSet itemSet) {
+			return new GenericDirective(itemSet);
+		}
+	},
 	NESTED(Keyword.NESTED, false) {
 		@Override
 		public Item createModelItem(ItemSet itemSet) {

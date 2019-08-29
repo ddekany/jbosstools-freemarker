@@ -14,6 +14,8 @@ public enum BuiltInInfo {
 
     /** {@link freemarker.core.BuiltInsForNumbers$absBI */
     ABS("abs", FTLType.NUMBER, FTLType.NUMBER, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsMisc$absolute_template_nameBI */
+    ABSOLUTE_TEMPLATE_NAME("absoluteTemplateName", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForNodes$ancestorsBI */
     ANCESTORS("ancestors", FTLType.NODE, FTLType.SEQUENCE, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForMultipleTypes$apiBI */
@@ -242,10 +244,16 @@ public enum BuiltInInfo {
     MARKUP_STRING("markupString", FTLType.MARKUP_OUTPUT, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsRegexp$matchesBI */
     MATCHES("matches", FTLType.STRING, FTLType.BOOLEAN, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForSequences$maxBI */
+    MAX("max", FTLType.SEQUENCE, FTLType.NUMBER, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForSequences$minBI */
+    MIN("min", FTLType.SEQUENCE, FTLType.NUMBER, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForMultipleTypes$namespaceBI */
     NAMESPACE("namespace", FTLType.MACRO_OR_FUNCTION, FTLType.HASH, false), //$NON-NLS-1$
     /** {@link freemarker.core.NewBI */
     NEW("new", FTLType.STRING, FTLType.ANY, true), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForNodes$nextSiblingBI */
+    NEXT_SIBLING("nextSibling", FTLType.NODE, FTLType.NODE, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForOutputFormatRelated$no_escBI */
     NO_ESC("noEsc", new FTLType[] { FTLType.STRING, FTLType.MARKUP_OUTPUT }, FTLType.MARKUP_OUTPUT, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForNodes$node_nameBI */
@@ -264,6 +272,8 @@ public enum BuiltInInfo {
     NUMBER_TO_TIME("numberToTime", FTLType.NUMBER, FTLType.DATE_LIKE, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForNodes$parentBI */
     PARENT("parent", FTLType.NODE, FTLType.NODE, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForNodes$previousSiblingBI */
+    PREVIOUS_SIBLING("previousSibling", FTLType.NODE, FTLType.NODE, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsBasic$remove_beginningBI */
     REMOVE_BEGINNING("removeBeginning", FTLType.STRING, FTLType.STRING, true), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsBasic$remove_endingBI */
@@ -280,6 +290,8 @@ public enum BuiltInInfo {
     ROUND("round", FTLType.NUMBER, FTLType.NUMBER, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsEncoding$rtfBI */
     RTF("rtf", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForSequences$sequenceBI */
+    SEQUENCE("sequence", FTLType.SEQUENCE, FTLType.SEQUENCE, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForSequences$seq_containsBI */
     SEQ_CONTAINS("seqContains", FTLType.SEQUENCE, FTLType.BOOLEAN, true), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForSequences$seq_index_ofBI */

@@ -38,6 +38,7 @@ public enum Keyword {
 	LOCAL,
 	GLOBAL,
 	BREAK,
+	CONTINUE,
 	NESTED,
 	RETURN,
 	STOP,
