@@ -21,6 +21,7 @@
  */
 package org.jboss.ide.eclipse.freemarker.model.interpolation;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -58,10 +59,12 @@ public abstract class AbstractFragment implements Fragment {
 		return content;
 	}
 
-	public ICompletionProposal[] completionProposals (List<ICompletionProposal> l) {
-
-		Collections.sort(l, COMPLETION_PROPOSAL_COMPARATOR);
-		return l.toArray(new ICompletionProposal[l.size()]);
+	public ICompletionProposal[] completionProposals (List<ICompletionProposal> proposals, boolean sort) {
+		ICompletionProposal[] proposalsAsArray = proposals.toArray(new ICompletionProposal[proposals.size()]);
+		if (sort) {
+			Arrays.sort(proposalsAsArray, COMPLETION_PROPOSAL_COMPARATOR);
+		}
+		return proposalsAsArray;
 	}
 
 	public ICompletionProposal getCompletionProposal (int offset, int subOffset,
@@ -76,7 +79,7 @@ public abstract class AbstractFragment implements Fragment {
 		return base.isAssignableFrom(test);
 	}
 
-	private static final Comparator<ICompletionProposal> COMPLETION_PROPOSAL_COMPARATOR = new Comparator<ICompletionProposal>() {
+	protected static final Comparator<ICompletionProposal> COMPLETION_PROPOSAL_COMPARATOR = new Comparator<ICompletionProposal>() {
 		@Override
 		public int compare(ICompletionProposal arg0, ICompletionProposal arg1) {
 			return arg0.getDisplayString().compareTo(arg1.getDisplayString());

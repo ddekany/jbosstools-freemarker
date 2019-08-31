@@ -136,7 +136,7 @@ public class BuiltInFragment extends AbstractFragment {
 				proposals.add(getCompletionProposal(key, entry.getValue(), offset, subOffset));
 			}
 		}
-		return completionProposals(proposals);
+		return completionProposals(proposals, true);
 	}
 
 	private ICompletionProposal getCompletionProposal(String key, BuiltInEditorInfo biEditorInfo, int offset, int subOffset) {

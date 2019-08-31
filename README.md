@@ -97,3 +97,6 @@ Date of release: 2019-08-23
 Date of release: NOT-YET-RELEASED
 
 - Several built-ins and the `continue` directive was missing from the auto-completion proposals. Also ensured that the unit test that detects this is part of the test suite.
+- Data-model (context) content assist almost never showed any Java methods. It was totally broken really. Now it shows them, except it deliberately filters out methods/properties
+  defined in Object, and Bean property readers. (This is somewhat related to JBIDE-23705.)
+- Data-model (context) content assist now shows Bean properties before methods. (Template normally want to read Bean properties, and not call methods directly.)
