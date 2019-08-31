@@ -173,20 +173,34 @@ public class NameFragment extends AbstractFragment {
 			
 			List<ICompletionProposal> propertyProposals = new ArrayList<>();
 			Set<Method> propertyReadMethods = new HashSet<Method>();
+			Map<String, Method> properties = new HashMap<>();
 			for (PropertyDescriptor pd : bi.getPropertyDescriptors()) {
 				String propertyName = pd.getName();
 				Method readMethod = pd.getReadMethod();
 				propertyReadMethods.add(readMethod);
 				if (readMethod != null && !isObjectMethod(readMethod)
 						&& propertyName.toUpperCase().startsWith(pUpper)) {
-					propertyProposals.add(new CompletionProposal(
-							propertyName,
-							offset - subOffset + 1,
-							getContent().length()-1,
-							propertyName.length(),
-							null, propertyName + " : " + readMethod.getReturnType().getName(), null, null)); //$NON-NLS-1$
+					properties.put(propertyName, readMethod);
 				}
 			}
+			// At least in Java 8 (and 9?) Introspector did not return properties based on default read methods, but FreeMarker can.
+			for (Method readMethod : parentClass.getMethods()) {
+				if (readMethod.isDefault() && !readMethod.isBridge() && readMethod.getReturnType() != void.class && readMethod.getParameterTypes().length == 0) {
+					String propertyName = getBeanPropertyNameFromReaderMethodName(readMethod.getName(), readMethod.getReturnType());
+					if (propertyName != null) {
+						propertyReadMethods.add(readMethod);
+						properties.put(propertyName, readMethod);
+					}
+				}
+			}
+			properties.forEach((propertyName, readMethod) -> {
+				propertyProposals.add(new CompletionProposal(
+						propertyName,
+						offset - subOffset + 1,
+						getContent().length()-1,
+						propertyName.length(),
+						null, propertyName + " : " + readMethod.getReturnType().getName(), null, null)); //$NON-NLS-1$
+			});
 			propertyProposals.sort(COMPLETION_PROPOSAL_COMPARATOR);
 			
 			List<ICompletionProposal> methodProposals = new ArrayList<>();
@@ -267,4 +281,31 @@ public class NameFragment extends AbstractFragment {
 		}
 		return false;
 	}
+	
+    /**
+     * Extracts the JavaBeans property from a reader method name, or returns {@code null} if the method name doesn't
+     * look like a reader method name. 
+     */
+    public static String getBeanPropertyNameFromReaderMethodName(String name, Class<?> returnType) {
+        int start;
+        if (name.startsWith("get")) {
+            start = 3;
+        } else if (returnType == boolean.class && name.startsWith("is")) {
+            start = 2;
+        } else {
+            return null;
+        }
+        int ln = name.length();
+        
+        if (start == ln) {
+            return null;
+        }
+        char c1 = name.charAt(start);
+        
+        return start + 1 < ln && Character.isUpperCase(name.charAt(start + 1)) && Character.isUpperCase(c1)
+                ? name.substring(start) // getFOOBar => "FOOBar" (not lower case) according the JavaBeans spec.
+                : new StringBuilder(ln - start).append(Character.toLowerCase(c1)).append(name, start + 1, ln)
+                        .toString();
+    }
+    
 }
