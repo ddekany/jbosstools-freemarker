@@ -84,19 +84,19 @@ You should also add the new version on the Eclipse Marketplace, [here](https://m
 
 ## Change log (version history)
 
+### 15.0.304
+
+Date of release: NOT-YET-RELEASED
+
+- Several built-ins and the `continue` directive were missing from the auto-completion proposals. Also ensured that the unit test that detects this is part of the test suite.
+- Data-model (context) content assist almost never showed any Java methods. It was totally broken really. Now it shows them, except it deliberately filters out methods/properties
+  defined in Object, and Bean property readers. (This is somewhat related to JBIDE-23705.)
+- Data-model (context) content assist now shows Bean properties before methods. (Templates normally want to read Bean properties, and not call methods directly.)
+
 ### 15.0.303
 
 Date of release: 2019-08-23
 
 - Updated embedded FreeMarker to 2.3.29
-- Released P2 repo on Bintray, added shell script and description to help the process
+- Created P2 repo on Bintray, added shell script and description to help the process
 - Created product on Eclipse Market place for this fork
-
-### 15.0304
-
-Date of release: NOT-YET-RELEASED
-
-- Several built-ins and the `continue` directive was missing from the auto-completion proposals. Also ensured that the unit test that detects this is part of the test suite.
-- Data-model (context) content assist almost never showed any Java methods. It was totally broken really. Now it shows them, except it deliberately filters out methods/properties
-  defined in Object, and Bean property readers. (This is somewhat related to JBIDE-23705.)
-- Data-model (context) content assist now shows Bean properties before methods. (Template normally want to read Bean properties, and not call methods directly.)
