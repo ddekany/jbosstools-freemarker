@@ -81,3 +81,19 @@ gut push
 ```
 
 You should also add the new version on the Eclipse Marketplace, [here](https://marketplace.eclipse.org/content/freemarker-ide).
+
+## Change log (version history)
+
+### 15.0.303
+
+Date of release: 2019-08-23
+
+- Updated embedded FreeMarker to 2.3.29
+- Released P2 repo on Bintray, added shell script and description to help the process
+- Created product on Eclipse Market place for this fork
+
+### 15.0304
+
+Date of release: NOT-YET-RELEASED
+
+- Several built-ins and the `continue` directive was missing from the auto-completion proposals. Also ensured that the unit test that detects this is part of the test suite.
