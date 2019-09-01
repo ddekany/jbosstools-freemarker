@@ -68,7 +68,7 @@ git commit -m "Updated version for release"
 mvn clean verify
 
 # Upload to Bintray
-version=$releaseVersion ../bintray-uploader/upload.sh
+version=$releaseVersion ./bintray-uploader/upload.sh
 
 git tag -a "v${releaseVersion}" -m "Release"
 git push --follow-tags
@@ -81,13 +81,16 @@ git commit -m "Updated version for development"
 gut push
 ```
 
+You should attach `site/target/freemarker.site-${releaseVersion}.zip` to the release on GitHub.
+
 You should also add the new version on the Eclipse Marketplace, [here](https://marketplace.eclipse.org/content/freemarker-ide).
+
 
 ## Change log (version history)
 
 ### 15.0.304
 
-Date of release: NOT-YET-RELEASED
+Date of release: 2019-09-01
 
 - Several built-ins and the `continue` directive were missing from the auto-completion proposals. Also ensured that the unit test that detects this is part of the test suite.
 - Several context (data-model) completion proposal (Code Assist, Ctrl+Space) fixes and improvements (fixes JBIDE-23705 and more):
