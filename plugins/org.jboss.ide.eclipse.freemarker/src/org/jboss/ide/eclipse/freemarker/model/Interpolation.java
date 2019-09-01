@@ -142,14 +142,14 @@ public class Interpolation extends AbstractDirective {
 		boolean inString = false;
 		boolean inBuiltIn = false;
 		boolean inNameFragment = false;
-		boolean inParameters = false;
+		int inParameters = 0;
 		boolean escape = false;
 		boolean doEscape = false;
 		for (int i = 0; i < contents.length(); i++) {
 			doEscape = false;
 			char c = contents.charAt(i);
 			if (Character.isLetterOrDigit(c) && !inString && !inBuiltIn
-					&& !inNameFragment && !inParameters)
+					&& !inNameFragment && inParameters == 0)
 				inNameFragment = true;
 			if (inNameFragment) {
 				if (c == LexicalConstants.QUESTION_MARK) {
@@ -163,7 +163,7 @@ public class Interpolation extends AbstractDirective {
 					offsetStart = i;
 					sb.delete(0, sb.length());
 					inNameFragment = false;
-					inParameters = true;
+					inParameters++;
 				} else if (c == LexicalConstants.PERIOD) {
 					fragments.add(new NameFragment(offsetStart, sb.toString()));
 					offsetStart = i;
@@ -200,17 +200,25 @@ public class Interpolation extends AbstractDirective {
 					sb.append(c);
 				} else
 					sb.append(c);
-			} else if (inParameters) {
+			} else if (inParameters > 0) {
 				if (inString)
 					if (!escape && c == LexicalConstants.QUOT)
 						inString = false;
-				if (!inString && c == LexicalConstants.RIGHT_PARENTHESIS) {
-					fragments.add(new ParametersFragment(offsetStart, sb
-							.toString()));
-					offsetStart = i + 1;
-					sb.delete(0, sb.length());
-				} else
+				if (!inString) {
+					if (c == LexicalConstants.RIGHT_PARENTHESIS) {
+						inParameters--;
+						if (inParameters == 0) {
+							fragments.add(new ParametersFragment(offsetStart, sb.toString()));
+							offsetStart = i + 1;
+							sb.delete(0, sb.length());
+						}
+					} else if (c == LexicalConstants.LEFT_PARENTHESIS) {
+						inParameters++;
+					}
+				}
+				if (inParameters > 0) {
 					sb.append(c);
+				}
 			} else if (inString) {
 				if (escape)
 					sb.append(c);
@@ -240,8 +248,9 @@ public class Interpolation extends AbstractDirective {
 				if (inBuiltIn)
 					fragments.add(new BuiltInFragment(offsetStart, sb
 							.toString()));
-				else
+				else if (sb.length() != 0) {
 					fragments.add(new NameFragment(offsetStart, sb.toString()));
+				}
 				inBuiltIn = true;
 				offsetStart = i;
 				sb.delete(0, sb.length());
@@ -252,7 +261,7 @@ public class Interpolation extends AbstractDirective {
 					if (sb.length() > 0 && !inBuiltIn)
 						fragments.add(new NameFragment(offsetStart, sb
 								.toString()));
-					inParameters = true;
+					inParameters++;
 					offsetStart = i;
 					sb.delete(0, sb.length());
 				}
