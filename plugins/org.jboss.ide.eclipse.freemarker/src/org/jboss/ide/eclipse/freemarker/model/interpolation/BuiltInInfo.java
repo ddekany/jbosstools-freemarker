@@ -25,7 +25,7 @@ public enum BuiltInInfo {
     /** {@link freemarker.core.BuiltInsForNumbers$byteBI */
     BYTE("byte", FTLType.NUMBER, FTLType.NUMBER, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForMultipleTypes$cBI */
-    C("c", new FTLType[] { FTLType.STRING, FTLType.NUMBER }, FTLType.STRING, false), //$NON-NLS-1$
+    C("c", new FTLType[] { FTLType.NUMBER, FTLType.BOOLEAN }, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsBasic$cap_firstBI */
     CAP_FIRST("capFirst", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsBasic$capitalizeBI */

@@ -33,6 +33,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.text.contentassist.CompletionProposal;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.source.ISourceViewer;
+import org.jboss.ide.eclipse.freemarker.util.TypeUtils;
 import org.w3c.dom.Node;
 
 /**
@@ -43,6 +44,7 @@ public class BuiltInFragment extends AbstractFragment {
 	private static final Map<String, BuiltInEditorInfo> STRING_BUILT_INS = createMap(FTLType.STRING);
 	private static final Map<String, BuiltInEditorInfo> NUMBER_BUILT_INS = createMap(FTLType.NUMBER);
 	private static final Map<String, BuiltInEditorInfo> DATE_BUILT_INS = createMap(FTLType.DATE_LIKE);
+	private static final Map<String, BuiltInEditorInfo> BOOLEAN_BUILT_INS = createMap(FTLType.BOOLEAN);
 	private static final Map<String, BuiltInEditorInfo> LIST_BUILT_INS = createMap(FTLType.SEQUENCE);
 	private static final Map<String, BuiltInEditorInfo> MAP_BUILT_INS = createMap(FTLType.HASH);
     private static final Map<String, BuiltInEditorInfo> NODE_BUILT_INS = createMap(FTLType.NODE);
@@ -103,6 +105,7 @@ public class BuiltInFragment extends AbstractFragment {
 	@Override
 	public ICompletionProposal[] getCompletionProposals (int subOffset, int offset, Class<?> parentClass,
 			List<Fragment> fragments, ISourceViewer sourceViewer, Map<String, Class<?>> context, IResource file, IProject project) {
+		parentClass = TypeUtils.toNonPrimitiveType(parentClass);
 		if (instanceOf(parentClass, String.class)) {
 			return getCompletionProposals(subOffset, offset, STRING_BUILT_INS);
 		}
@@ -112,7 +115,10 @@ public class BuiltInFragment extends AbstractFragment {
 		else if (instanceOf(parentClass, Date.class)) {
 			return getCompletionProposals(subOffset, offset, DATE_BUILT_INS);
 		}
-		else if (instanceOf(parentClass, Collection.class) || instanceOf(parentClass, List.class)
+		else if (instanceOf(parentClass, Boolean.class)) {
+			return getCompletionProposals(subOffset, offset, BOOLEAN_BUILT_INS);
+		}
+		else if (instanceOf(parentClass, Collection.class)
 		        || parentClass != null && parentClass.isArray()) {
 			return getCompletionProposals(subOffset, offset, LIST_BUILT_INS);
 		}

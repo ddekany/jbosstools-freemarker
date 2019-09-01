@@ -95,6 +95,7 @@ Date of release: NOT-YET-RELEASED
   - Now shows Bean properties before methods. (Templates normally want to read Bean properties, and not call methods directly.)
   - Now it discovers Bean properties and methods that were defined by Java 8 default methods (FreeMarker supports that when properly configured)
   - Didn't work for subvariables, as at the 2nd dot (like after `${user.phone.`) it lost track of the type
+  - For properties/methods with primitive return value the built-in completion proposals weren't filtered by left hand operand type
 
 ### 15.0.303
 
