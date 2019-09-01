@@ -22,36 +22,28 @@
 package org.jboss.ide.eclipse.freemarker.model.interpolation;
 
 
-import java.beans.BeanInfo;
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.MethodDescriptor;
-import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.text.contentassist.CompletionProposal;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.source.ISourceViewer;
-import org.jboss.ide.eclipse.freemarker.Plugin;
 import org.jboss.ide.eclipse.freemarker.configuration.ConfigurationManager;
 import org.jboss.ide.eclipse.freemarker.configuration.ContextValue;
-import org.jboss.ide.eclipse.freemarker.lang.LexicalConstants;
+import org.jboss.ide.eclipse.freemarker.util.TypeUtils;
+import org.jboss.ide.eclipse.freemarker.util.TypeUtils.BeanMembers;
 
 /**
  * @author <a href="mailto:joe@binamics.com">Joe Hudson</a>
@@ -89,40 +81,33 @@ public class NameFragment extends AbstractFragment {
 			String content = getContent().trim();
 			if (isStartFragment()) {
 				returnClass = context.get(content);
-			}
-			else {
-				String subvarName = content;
-				if (subvarName.startsWith(".")) { //$NON-NLS-1$
-					subvarName = subvarName.substring(1);
-				}
-				subvarName = subvarName.trim();
-				
+			} else {
 				if (null == parentClass) {
 					returnClass = Object.class;
-				}
-				else {
-					try {
-						for (PropertyDescriptor propertyDescriptor : Introspector.getBeanInfo(parentClass).getPropertyDescriptors()) {
-							if (propertyDescriptor.getName().equals(subvarName) && propertyDescriptor.getReadMethod() != null) {
-								return propertyDescriptor.getPropertyType();
-							}
-						}
-					} catch (IntrospectionException e) {
-						return Object.class;
-					}
-					// At least in Java 8 (and 9?) Introspector did not return properties based on default read methods, but FreeMarker can.
-					for (Method method : parentClass.getMethods()) {
-						if (method.isDefault() && !method.isBridge()) {
-							String propertyName = getBeanPropertyNameFromReaderMethodName(method.getName(), method.getReturnType());
-							if (propertyName != null && propertyName.equals(subvarName)) {
-								return method.getReturnType();
-							}
-						}
+				} else {
+					String subvarName = contentToSubvarName(content);
+					BeanMembers beanMembers = TypeUtils.getBeanMembers(parentClass, true, true, false,
+							(name, method) -> subvarName.equals(name));
+					if (!beanMembers.getMethods().isEmpty()) {
+						returnClass = Method.class; // Can't encode the return type into this
+					} else if (!beanMembers.getProperties().isEmpty()) {
+						returnClass = beanMembers.getProperties().get(0).getReturnType();
+					} else {
+						returnClass = Object.class;
 					}
 				}
 			}
 		}
 		return returnClass;
+	}
+
+	private String contentToSubvarName(String content) {
+		String s = content;
+		if (s.startsWith(".")) { //$NON-NLS-1$
+			s = s.substring(1);
+		}
+		String subvarName = s.trim();
+		return subvarName;
 	}
 
 	private Class<?> singulaReturnClass;
@@ -179,148 +164,65 @@ public class NameFragment extends AbstractFragment {
 				|| parentClass.isArray()
 				|| instanceOf(parentClass, Iterator.class)
 				|| instanceOf(parentClass, Enumeration.class)
-				|| instanceOf(parentClass, ResourceBundle.class))
+				|| instanceOf(parentClass, ResourceBundle.class)) {
 			return null;
+		}
+		
 		String prefix = getContent().substring(1, subOffset);
-		String pUpper = prefix.toUpperCase();
-		try {
-			BeanInfo bi = Introspector.getBeanInfo(parentClass);
-			
-			List<ICompletionProposal> propertyProposals = new ArrayList<>();
-			Set<Method> propertyReadMethods = new HashSet<Method>();
-			Map<String, Method> properties = new HashMap<>();
-			for (PropertyDescriptor pd : bi.getPropertyDescriptors()) {
-				String propertyName = pd.getName();
-				Method readMethod = pd.getReadMethod();
-				propertyReadMethods.add(readMethod);
-				if (readMethod != null && !isObjectMethod(readMethod)
-						&& propertyName.toUpperCase().startsWith(pUpper)) {
-					properties.put(propertyName, readMethod);
-				}
-			}
-			// At least in Java 8 (and 9?) Introspector did not return properties based on default read methods, but FreeMarker can.
-			for (Method readMethod : parentClass.getMethods()) {
-				if (readMethod.isDefault() && !readMethod.isBridge() && readMethod.getReturnType() != void.class && readMethod.getParameterTypes().length == 0) {
-					String propertyName = getBeanPropertyNameFromReaderMethodName(readMethod.getName(), readMethod.getReturnType());
-					if (propertyName != null) {
-						propertyReadMethods.add(readMethod);
-						properties.put(propertyName, readMethod);
-					}
-				}
-			}
-			properties.forEach((propertyName, readMethod) -> {
-				propertyProposals.add(new CompletionProposal(
-						propertyName,
+		String prefixUpper = prefix.toUpperCase();
+		
+		BeanMembers beanMembers = TypeUtils.getBeanMembers(
+				parentClass, true, true, true,
+				(name, method) ->
+						TypeUtils.filterForCompletionProposal(name, method)
+						&& name.toUpperCase().startsWith(prefixUpper));
+		
+		List<ICompletionProposal> propertyProposals = beanMembers.getProperties().stream()
+				.map(beanMember -> new CompletionProposal(
+						beanMember.getName(),
 						offset - subOffset + 1,
 						getContent().length()-1,
-						propertyName.length(),
-						null, propertyName + " : " + readMethod.getReturnType().getName(), null, null)); //$NON-NLS-1$
-			});
-			propertyProposals.sort(COMPLETION_PROPOSAL_COMPARATOR);
-			
-			List<ICompletionProposal> methodProposals = new ArrayList<>();
-			Set<Method> methods = new HashSet<>();
-			for (MethodDescriptor methodDescriptor : bi.getMethodDescriptors()) {
-				methods.add(methodDescriptor.getMethod());
-			}
-			
-			// At least in Java 8 (and 9?) Introspector did not return default methods, but FreeMarker can.
-			for (Method method : parentClass.getMethods()) {
-				if (method.isDefault()) {
-					methods.add(method);
-				}
-			}
-			
-			for (Method m : methods) {
-				String mName = m.getName();
-				if (!m.isBridge() && !m.isSynthetic()
-						&& !propertyReadMethods.contains(m) && !isObjectMethod(m)
-						&& mName.toUpperCase().startsWith(pUpper)) {
+						beanMember.getName().length(),
+						null,
+						beanMember.getName() + " : " + beanMember.getReturnType().getName(), //$NON-NLS-1$
+						null, null))
+				.sorted(COMPLETION_PROPOSAL_COMPARATOR)
+				.collect(Collectors.toList());
+		
+		List<ICompletionProposal> methodProposals = beanMembers.getMethods().stream()
+				.map(beanMember -> {
+					String mName = beanMember.getName();
+					
 					StringBuilder mLabel = new StringBuilder();
 					mLabel.append(mName);
 					mLabel.append("("); //$NON-NLS-1$
 					boolean first = true;
-					for (Class<?> parameterType : m.getParameterTypes()) {
+					Class<?>[] parameterTypes = beanMember.getAccessor().getParameterTypes();
+					for (Class<?> parameterType : parameterTypes) {
 						if (!first) {
 							mLabel.append(", "); //$NON-NLS-1$
 						}
 						mLabel.append(parameterType.getName());
 						first = false;
 					}
-					mLabel.append(") : ").append(m.getReturnType().getName()); //$NON-NLS-1$
-					String actual = mName + "()"; //$NON-NLS-1$
-					int tLength = actual.length();
-					if (m.getParameterTypes().length > 0) {
-						tLength--;
+					mLabel.append(") : ").append(beanMember.getReturnType().getName()); //$NON-NLS-1$
+					String insertedText = mName + "()"; //$NON-NLS-1$
+					int cursorTextLength = insertedText.length();
+					if (parameterTypes.length > 0) {
+						cursorTextLength--;
 					}
-					methodProposals.add(new CompletionProposal(actual,
-							offset - subOffset + 1, getContent().length()-1, tLength,
-							null, mLabel.toString(), null, null));
-				}
-			}
-			methodProposals.sort(COMPLETION_PROPOSAL_COMPARATOR);
-			
-			List<ICompletionProposal> proposals = new ArrayList<>();
-			proposals.addAll(propertyProposals);
-			proposals.addAll(methodProposals);
-			return completionProposals(proposals, false);
-		}
-		catch (IntrospectionException e) {
-			Plugin.log(e);
-			return null;
-		}
+					
+					return new CompletionProposal(insertedText,
+							offset - subOffset + 1, getContent().length()-1, cursorTextLength,
+							null, mLabel.toString(), null, null);								
+				})
+				.sorted(COMPLETION_PROPOSAL_COMPARATOR)
+				.collect(Collectors.toList());
+		
+		List<ICompletionProposal> proposals = new ArrayList<>();
+		proposals.addAll(propertyProposals);
+		proposals.addAll(methodProposals);
+		return completionProposals(proposals, false);
 	}
-
-	/**
-	 * Tells if a public method was originally declared in {@link Object}, even if it was overridden.
-	 */
-	private static boolean isObjectMethod(Method m) {
-		Class<?> declaringClass = m.getDeclaringClass();
-		while (declaringClass != null) {
-			if (declaringClass == Object.class) {
-				return true;
-			}
-			
-			Class<?> superClass = declaringClass.getSuperclass();
-			if (superClass != null) {
-				try {
-					Method newM = superClass.getMethod(m.getName(), m.getParameterTypes());
-					declaringClass = newM.getDeclaringClass();
-				} catch (NoSuchMethodException | SecurityException e) {
-					// Give up
-					declaringClass = null;
-				}
-			} else {
-				declaringClass = null;
-			}
-		}
-		return false;
-	}
-	
-    /**
-     * Extracts the JavaBeans property from a reader method name, or returns {@code null} if the method name doesn't
-     * look like a reader method name. 
-     */
-    public static String getBeanPropertyNameFromReaderMethodName(String name, Class<?> returnType) {
-        int start;
-        if (name.startsWith("get")) {
-            start = 3;
-        } else if (returnType == boolean.class && name.startsWith("is")) {
-            start = 2;
-        } else {
-            return null;
-        }
-        int ln = name.length();
-        
-        if (start == ln) {
-            return null;
-        }
-        char c1 = name.charAt(start);
-        
-        return start + 1 < ln && Character.isUpperCase(name.charAt(start + 1)) && Character.isUpperCase(c1)
-                ? name.substring(start) // getFOOBar => "FOOBar" (not lower case) according the JavaBeans spec.
-                : new StringBuilder(ln - start).append(Character.toLowerCase(c1)).append(name, start + 1, ln)
-                        .toString();
-    }
     
 }

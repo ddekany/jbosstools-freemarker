@@ -93,9 +93,10 @@ Date of release: NOT-YET-RELEASED
   - It almost never showed any Java methods (but still showed the Bean properties), as the filter logic there was broken.
     Now it shows them, except it deliberately filters out methods/properties defined in Object, and Bean property reader methods.
   - Now shows Bean properties before methods. (Templates normally want to read Bean properties, and not call methods directly.)
-  - Now it discovers Bean properties and methods that were defined by Java 8 default methods (FreeMarker supports that when properly configured)
-  - Didn't work for subvariables, as at the 2nd dot (like after `${user.phone.`) it lost track of the type
-  - For properties/methods with primitive return value the built-in completion proposals weren't filtered by left hand operand type
+  - Now it discovers Bean properties and methods that were defined by Java 8 default methods (FreeMarker supports that when properly configured).
+  - Didn't work for subvariables, as at the 2nd dot (like after `${user.phone.`) it lost track of the type.
+  - For properties/methods with primitive return value the built-in completion proposals weren't filtered by left hand operand type.
+  - When the left hand operand of a built-ins was a boolean, all built-ins were proposed, instead of just the boolean built-ins.
 
 ### 15.0.303
 
