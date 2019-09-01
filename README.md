@@ -57,6 +57,7 @@ Maven release plugin didn't work for some reason, and anyway we need to change O
 releaseVersion='1.5.303'
 nextVersion='1.5.304'
 
+# Attention: You must be in the project root directory!
 find -type f -name "pom.xml" -not -path '*/target/*' -exec sed -Ei 's/('${releaseVersion//./\\.}')-SNAPSHOT/\1/g' {} \;
 find -type f \( -name "MANIFEST.MF" -o -name "feature.xml" -o -name "category.xml" \) -not -path '*/target/*' -exec sed -Ei 's/('${releaseVersion//./\\.}')\.qualifier/\1/g' {} \;
 
