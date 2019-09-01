@@ -89,9 +89,12 @@ You should also add the new version on the Eclipse Marketplace, [here](https://m
 Date of release: NOT-YET-RELEASED
 
 - Several built-ins and the `continue` directive were missing from the auto-completion proposals. Also ensured that the unit test that detects this is part of the test suite.
-- Data-model (context) content assist almost never showed any Java methods. It was totally broken really. Now it shows them, except it deliberately filters out methods/properties
-  defined in Object, and Bean property readers. (This is somewhat related to JBIDE-23705.)
-- Data-model (context) content assist now shows Bean properties before methods. (Templates normally want to read Bean properties, and not call methods directly.)
+- Several context (data-model) completion proposal (Code Assist, Ctrl+Space) fixes and improvements (fixes JBIDE-23705 and more):
+  - It almost never showed any Java methods (but still showed the Bean properties), as the filter logic there was broken.
+    Now it shows them, except it deliberately filters out methods/properties defined in Object, and Bean property reader methods.
+  - Now shows Bean properties before methods. (Templates normally want to read Bean properties, and not call methods directly.)
+  - Now it discovers Bean properties and methods that were defined by Java 8 default methods (FreeMarker supports that when properly configured)
+  - Didn't work for subvariables, as at the 2nd dot (like after `${user.phone.`) it lost track of the type
 
 ### 15.0.303
 

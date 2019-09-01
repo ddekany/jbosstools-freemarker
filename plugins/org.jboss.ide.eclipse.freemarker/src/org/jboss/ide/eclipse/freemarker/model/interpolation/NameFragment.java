@@ -86,22 +86,37 @@ public class NameFragment extends AbstractFragment {
 	@Override
 	public Class<?> getReturnClass (Class<?> parentClass, List<Fragment> fragments, Map<String, Class<?>> context, IResource resource, IProject project){
 		if (null == returnClass) {
-			String content = getContent();
+			String content = getContent().trim();
 			if (isStartFragment()) {
 				returnClass = context.get(content);
 			}
 			else {
+				String subvarName = content;
+				if (subvarName.startsWith(".")) { //$NON-NLS-1$
+					subvarName = subvarName.substring(1);
+				}
+				subvarName = subvarName.trim();
+				
 				if (null == parentClass) {
 					returnClass = Object.class;
 				}
 				else {
-					content = Character.toUpperCase(content.charAt(1)) + content.substring(2, getContent().length());
-					String getcontent = "get" + content; //$NON-NLS-1$
-					for (int i=0; i<parentClass.getMethods().length; i++) {
-						Method m = parentClass.getMethods()[i];
-						if (m.getName().equals(content) || m.getName().equals(getcontent)) {
-							returnClass = m.getReturnType();
-							break;
+					try {
+						for (PropertyDescriptor propertyDescriptor : Introspector.getBeanInfo(parentClass).getPropertyDescriptors()) {
+							if (propertyDescriptor.getName().equals(subvarName) && propertyDescriptor.getReadMethod() != null) {
+								return propertyDescriptor.getPropertyType();
+							}
+						}
+					} catch (IntrospectionException e) {
+						return Object.class;
+					}
+					// At least in Java 8 (and 9?) Introspector did not return properties based on default read methods, but FreeMarker can.
+					for (Method method : parentClass.getMethods()) {
+						if (method.isDefault() && !method.isBridge()) {
+							String propertyName = getBeanPropertyNameFromReaderMethodName(method.getName(), method.getReturnType());
+							if (propertyName != null && propertyName.equals(subvarName)) {
+								return method.getReturnType();
+							}
 						}
 					}
 				}
