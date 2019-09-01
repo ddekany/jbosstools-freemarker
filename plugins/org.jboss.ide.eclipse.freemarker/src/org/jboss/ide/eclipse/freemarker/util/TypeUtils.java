@@ -42,6 +42,9 @@ public final class TypeUtils {
 	}
 
 	public static Class<?> toNonPrimitiveType(Class<?> cl) {
+		if (cl == null) {
+			return null;
+		}
 		if (cl.isPrimitive()) {
 			if (cl == int.class) {
 				return Integer.class;

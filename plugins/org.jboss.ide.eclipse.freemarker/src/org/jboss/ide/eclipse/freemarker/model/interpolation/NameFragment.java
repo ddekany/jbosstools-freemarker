@@ -81,6 +81,9 @@ public class NameFragment extends AbstractFragment {
 			String content = getContent().trim();
 			if (isStartFragment()) {
 				returnClass = context.get(content);
+				if (returnClass == null) {
+					returnClass = Object.class;
+				}
 			} else {
 				if (null == parentClass) {
 					returnClass = Object.class;
