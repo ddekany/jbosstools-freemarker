@@ -7,7 +7,10 @@
 This is an Eclipse pluging that provides an editor for [Apache FreeMarker](https://freemarker.apache.org/) `.ftl` (and `.ftlh`, `.ftlx`, etc.) files with *syntax error markers* as you type, syntax highlighting (for the template language only), and some code completion.
 
 If you are looking at the fork of user ddekany, then the last released version should be
-[on the Eclipse Marketplace here](https://marketplace.eclipse.org/content/freemarker-ide),
+[on the Eclipse Marketplace](https://marketplace.eclipse.org/content/freemarker-ide),
+
+<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=4770582" class="drag" title="Drag and drop onto your running Eclipse toolbar. Requires Eclipse Marketplace Client"><img typeof="foaf:Image" class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag and drop onto your running Eclipse toolbar. Requires Eclipse Marketplace Client" /></a>
+
 and also on [the Eclipse update site on Bintray](https://dl.bintray.com/freemarker/freemarker-ide/).
 
 ## Building
