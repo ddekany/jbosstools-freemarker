@@ -8,7 +8,7 @@
 		<version>4.5.3.Final-SNAPSHOT</version>
 	</parent>
 	<artifactId>freemarker</artifactId>
-	<version>1.5.305</version>
+	<version>1.5.306-SNAPSHOT</version>
 	<name>jbosstools-freemarker</name>
 	<packaging>pom</packaging>
 	<properties>
