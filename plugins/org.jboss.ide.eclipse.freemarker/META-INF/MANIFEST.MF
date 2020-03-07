@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.ui
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
- lib/freemarker-2.3.29.jar
+ lib/freemarker-2.3.30.jar
 Bundle-Vendor: %providerName
 Export-Package: freemarker.core,
  freemarker.template,
