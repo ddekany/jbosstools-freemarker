@@ -89,6 +89,12 @@ You should also add the new version on the Eclipse Marketplace, [here](https://m
 
 ## Change log (version history)
 
+### 15.0.305
+
+Date of release: 2020-03-07
+
+- Updated embedded FreeMarker to 2.3.30
+
 ### 15.0.304
 
 Date of release: 2019-09-01
