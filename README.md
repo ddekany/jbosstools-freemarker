@@ -54,6 +54,7 @@ to `eclipse.ini`: `-Dorg.eclipse.epp.logging.aeri.ui.skipReports=true`
 Maven release plugin didn't work for some reason, and anyway we need to change OSGi versions in MANIFEST.MF-s too, so I just do this:
 
 ```
+# It's assumed that the version number is already on $releaseVersion-SNAPSHOT. That was also set by these commands, if they were used for the previous release, as you will see later.
 releaseVersion='1.5.303'
 nextVersion='1.5.304'
 
@@ -78,7 +79,7 @@ find -type f \( -name "MANIFEST.MF" -o -name "feature.xml" -o -name "category.xm
 
 git add .
 git commit -m "Updated version for development"
-gut push
+git push
 ```
 
 You should attach `site/target/freemarker.site-${releaseVersion}.zip` to the release on GitHub.
