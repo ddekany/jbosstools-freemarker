@@ -354,6 +354,8 @@ public enum BuiltInInfo {
     VALUES("values", FTLType.HASH, FTLType.SEQUENCE, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsEncoding$htmlBI */
     WEB_SAFE("webSafe", new FTLType[] { FTLType.STRING }, FTLType.STRING, false, true), //$NON-NLS-1$
+    WITH_ARGS("withArgs", new FTLType[] { FTLType.MACRO_OR_FUNCTION, FTLType.DIRECTIVE }, FTLType.MACRO_OR_FUNCTION, true),
+    WITH_ARGS_LAST("withArgsLast", new FTLType[] { FTLType.MACRO_OR_FUNCTION, FTLType.DIRECTIVE }, FTLType.MACRO_OR_FUNCTION, true),
     /** {@link freemarker.core.BuiltInsForStringsBasic$word_listBI */
     WORD_LIST("wordList", FTLType.STRING, FTLType.SEQUENCE, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsEncoding$xhtmlBI */
