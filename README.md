@@ -8,7 +8,7 @@ This is an Eclipse pluging that provides an editor for [Apache FreeMarker](https
 
 If you are looking at the fork of user ddekany, then the last released version should be
 [on the Eclipse Marketplace here](https://marketplace.eclipse.org/content/freemarker-ide),
-and also on [the Eclipse update site on Bintray](https://dl.bintray.com/freemarker/freemarker-ide/).
+and also on [the Eclipse update site on Bintray](https://dl.bintray.com/freemarker/freemarker-ide/). If Bintray is unavailable, the plugin can be downloaded from the [Github release page](https://github.com/ddekany/jbosstools-freemarker/releases).
 
 ## Building
 
