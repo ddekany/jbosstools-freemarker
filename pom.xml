@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.jboss.tools</groupId>
 		<artifactId>parent</artifactId>
-		<version>4.5.3.Final-SNAPSHOT</version>
+		<version>4.19.1.Final-SNAPSHOT</version>
 	</parent>
 	<artifactId>freemarker</artifactId>
 	<version>1.6.0-SNAPSHOT</version>
@@ -14,7 +14,7 @@
 	<packaging>pom</packaging>
 	<properties>
 		<tycho.scmUrl>scm:git:https://github.com/ddekany/jbosstools-freemarker.git</tycho.scmUrl>
- 	</properties>
+	</properties>
 	<modules>
 		<module>plugins</module>
 		<module>tests</module>
@@ -22,13 +22,13 @@
 		<module>site</module>
 	</modules>
 	<repositories>
-                <repository>
-                        <id>jbosstools-base</id>
-                        <layout>p2</layout>
-                        <url>${jbosstools-base-site}</url>
-                </repository>
-                <!-- To resolve parent artifact -->
-                <repository>
+		<repository>
+			<id>jbosstools-base</id>
+			<layout>p2</layout>
+			<url>${jbosstools-base-site}</url>
+		</repository>
+		<!-- To resolve parent artifact -->
+		<repository>
 			<id>jboss-public-repository-group</id>
 			<name>JBoss Public Repository Group</name>
 			<url>https://repository.jboss.org/nexus/content/groups/public/</url>

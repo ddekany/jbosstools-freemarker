@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.editors,
  org.jboss.tools.locus.mockito,
  org.eclipse.ui.ide
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Export-Package: org.jboss.ide.eclipse.freemarker.editor.test,org.jboss

@@ -36,7 +36,7 @@ then select "FreeMarker IDE".
    1. `jbosstools-base`:
       - Get it from <https://github.com/jbosstools/jbosstools-base>.
       - Build it: `mvn verify -DskipTests=true`
-      - In Ecpise "Install new software" from location, `jbosstools-base\site\target\repository`, and select "JBoss Tools Test Framework"
+      - In Eclipse "Install new software" from location, `jbosstools-base\site\target\repository`, and select "JBoss Tools Test Framework"
    2. `jbosstools-locus`:
       - Get it from <https://github.com/jbosstools/jbosstools-locus>.
       - Similar procedure as with jbosstools-base. Install from the `site/target/repository`, select "Mockito Plug-in"
@@ -88,6 +88,11 @@ You should also add the new version on the Eclipse Marketplace, [here](https://m
 
 
 ## Change log (version history)
+
+### 1.6.0
+
+- Updated embedded FreeMarker to 2.3.31
+- Use GitHub Actions for Update Site
 
 ### 15.0.305
 
