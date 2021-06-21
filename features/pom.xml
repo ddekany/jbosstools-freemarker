@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>org.jboss.tools</groupId>
 		<artifactId>freemarker</artifactId>
-		<version>1.5.306-SNAPSHOT</version>
+		<version>1.6.0-SNAPSHOT</version>
 	</parent>
 	<groupId>org.jboss.tools.freemarker</groupId>
 	<artifactId>features</artifactId>
-	
+
 	<name>freemarker.features</name>
 	<packaging>pom</packaging>
 	<modules>
