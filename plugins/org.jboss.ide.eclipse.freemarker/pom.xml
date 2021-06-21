@@ -12,7 +12,7 @@
 
 	<packaging>eclipse-plugin</packaging>
 	<properties>
-		<freemarkerVersion>2.3.30</freemarkerVersion>
+		<freemarkerVersion>2.3.31</freemarkerVersion>
 	</properties>
 	<build>
 		<plugins>

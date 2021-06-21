@@ -118,7 +118,8 @@ public class ReconcilingStrategy implements IReconcilingStrategy,
 	 */
 	private ParseException checkTemplateSyntax() {
 		if (fmConfiguration == null) {
-			fmConfiguration = new Configuration(Configuration.getVersion());
+			// see Freemarker configuration; we should use the version we are supporting, not the latest.
+			fmConfiguration = new Configuration(Configuration.VERSION_2_3_31);
 			fmConfiguration.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
 			fmConfiguration.setTabSize(1);
 		}
