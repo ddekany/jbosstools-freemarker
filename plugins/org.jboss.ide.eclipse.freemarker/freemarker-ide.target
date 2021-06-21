@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="Freemarker IDE Target Platform" sequenceNumber="1624306656">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.apache.ant" version="0.0.0"/>
+      <unit id="org.eclipse.core.resources" version="0.0.0"/>
+      <unit id="org.eclipse.core.runtime" version="0.0.0"/>
+      <unit id="org.eclipse.debug.ui" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.core" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.ui" version="0.0.0"/>
+      <unit id="org.eclipse.jface" version="0.0.0"/>
+      <unit id="org.eclipse.jface.text" version="0.0.0"/>
+      <unit id="org.eclipse.text" version="0.0.0"/>
+      <unit id="org.eclipse.swt" version="0.0.0"/>
+      <unit id="org.eclipse.ui" version="0.0.0"/>
+      <unit id="org.eclipse.ui.console" version="0.0.0"/>
+      <unit id="org.eclipse.ui.editors" version="0.0.0"/>
+      <unit id="org.eclipse.ui.ide" version="0.0.0"/>
+      <unit id="org.eclipse.ui.views" version="0.0.0"/>
+      <unit id="org.eclipse.ui.workbench.texteditor" version="0.0.0"/>
+      <unit id="org.junit" version="0.0.0"/>
+      <unit id="org.eclipse.ui.workbench" version="0.0.0"/>
+      <unit id="org.eclipse.ui.ide.application" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/releases/2021-06"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <repository location="https://download.eclipse.org/eclipse/updates/4.20"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.jboss.tools.tests" version="0.0.0"/>
+      <repository location="https://download.jboss.org/jbosstools/photon/snapshots/builds/jbosstools-base_master/latest/all/repo"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
+      <unit id="org.jboss.tools.locus.mockito" version="0.0.0"/>
+      <repository location="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/jbosstools-locus/1.9.0-SNAPSHOT/jbosstools-locus-1.9.0-SNAPSHOT-updatesite.zip-unzip"/>
+    </location>
+  </locations>
+</target>

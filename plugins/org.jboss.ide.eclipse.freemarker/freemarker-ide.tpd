@@ -1,0 +1,36 @@
+target "Freemarker IDE Target Platform"
+
+with requirements, source, configurePhase
+
+location "https://download.eclipse.org/releases/2021-06" {
+  org.apache.ant lazy
+  org.eclipse.core.resources lazy
+  org.eclipse.core.runtime lazy
+  org.eclipse.debug.ui lazy
+  org.eclipse.jdt.core lazy
+  org.eclipse.jdt.ui lazy
+  org.eclipse.jface lazy
+  org.eclipse.jface.text lazy
+  org.eclipse.text lazy
+  org.eclipse.swt lazy
+  org.eclipse.ui lazy
+  org.eclipse.ui.console lazy
+  org.eclipse.ui.editors lazy
+  org.eclipse.ui.ide lazy
+  org.eclipse.ui.views lazy
+  org.eclipse.ui.workbench.texteditor lazy
+  org.junit lazy
+  org.eclipse.ui.workbench lazy
+  org.eclipse.ui.ide.application lazy
+}
+
+location "https://download.eclipse.org/eclipse/updates/4.20" {
+}
+
+location "https://download.jboss.org/jbosstools/photon/snapshots/builds/jbosstools-base_master/latest/all/repo" {
+  org.jboss.tools.tests lazy
+}
+
+location "https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/jbosstools-locus/1.9.0-SNAPSHOT/jbosstools-locus-1.9.0-SNAPSHOT-updatesite.zip-unzip" {
+  org.jboss.tools.locus.mockito lazy
+}
