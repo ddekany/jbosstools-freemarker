@@ -1,6 +1,7 @@
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="utf-8" ?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jboss.tools</groupId>
@@ -13,7 +14,7 @@
 	<packaging>pom</packaging>
 	<properties>
 		<tycho.scmUrl>scm:git:https://github.com/ddekany/jbosstools-freemarker.git</tycho.scmUrl>
- 	</properties>
+	</properties>
 	<modules>
 		<module>plugins</module>
 		<module>tests</module>
@@ -21,13 +22,13 @@
 		<module>site</module>
 	</modules>
 	<repositories>
-                <repository>
-                        <id>jbosstools-base</id>
-                        <layout>p2</layout>
-                        <url>${jbosstools-base-site}</url>
-                </repository>
-                <!-- To resolve parent artifact -->
-                <repository>
+		<repository>
+			<id>jbosstools-base</id>
+			<layout>p2</layout>
+			<url>${jbosstools-base-site}</url>
+		</repository>
+		<!-- To resolve parent artifact -->
+		<repository>
 			<id>jboss-public-repository-group</id>
 			<name>JBoss Public Repository Group</name>
 			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
