@@ -1,13 +1,13 @@
-/*******************************************************************************
- * Copyright (c) 2015 Red Hat, Inc.
- * Distributed under license by Red Hat, Inc. All rights reserved.
- * This program is made available under the terms of the
- * Eclipse Public License v1.0 which accompanies this distribution,
- * and is available at http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- * Red Hat, Inc. - initial API and implementation
- ******************************************************************************/
+/******************************************************************************* 
+ * Copyright (c) 2015 Red Hat, Inc. 
+ * Distributed under license by Red Hat, Inc. All rights reserved. 
+ * This program is made available under the terms of the 
+ * Eclipse Public License v1.0 which accompanies this distribution, 
+ * and is available at http://www.eclipse.org/legal/epl-v10.html 
+ * 
+ * Contributors: 
+ * Red Hat, Inc. - initial API and implementation 
+ ******************************************************************************/ 
 package org.jboss.ide.eclipse.freemarker.model.interpolation;
 
 public enum BuiltInInfo {
@@ -365,14 +365,14 @@ public enum BuiltInInfo {
     /** {@link freemarker.core.BuiltInsForStringsMisc$evalJsonBI */
     EVAL_JSON("eval_json", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
     ;
-
+    
     private final String snakeCaseName;
     private final String camelCaseName;
     private final FTLType[] leftHandTypes;
     private final FTLType returnType;
     private final boolean parameterListRequired;
     private final boolean deprecated;
-
+    
     private BuiltInInfo(String camleCaseName, FTLType leftHandTypes, FTLType returnType, boolean parameterListRequired) {
         this(camleCaseName, new FTLType[] { leftHandTypes }, returnType, parameterListRequired);
     }
@@ -386,7 +386,7 @@ public enum BuiltInInfo {
         this.parameterListRequired = parameterListRequired;
         this.deprecated = deprecated;
     }
-
+    
     private BuiltInInfo(String camleCaseName, FTLType[] leftHandTypes, FTLType returnType, boolean parameterListRequired) {
         this(camleCaseName, leftHandTypes, returnType, parameterListRequired, false);
     }
@@ -414,5 +414,5 @@ public enum BuiltInInfo {
     public boolean isDeprecated() {
         return deprecated;
     }
-
+    
 }

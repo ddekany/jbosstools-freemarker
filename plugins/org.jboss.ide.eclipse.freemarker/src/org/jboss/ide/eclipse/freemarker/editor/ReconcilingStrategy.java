@@ -107,19 +107,18 @@ public class ReconcilingStrategy implements IReconcilingStrategy,
 			this.editor.updateModel(regions, stamp1 == stamp2 ? stamp1 : null);
 		}
 
-		ParseException e = checkTemplateSyntax();
+		ParseException e = checkTemplateSyntax();		
 		this.editor.updateMarkers(e);
 	}
 
 	private Configuration fmConfiguration;
-
+	
 	/**
 	 * Returns the syntactical error in the template, or {@code null} if there's none.
 	 */
 	private ParseException checkTemplateSyntax() {
 		if (fmConfiguration == null) {
-			// see Freemarker configuration; we should use the version we are supporting, not the latest.
-			fmConfiguration = new Configuration(Configuration.VERSION_2_3_31);
+			fmConfiguration = new Configuration(Configuration.getVersion());
 			fmConfiguration.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
 			fmConfiguration.setTabSize(1);
 		}
