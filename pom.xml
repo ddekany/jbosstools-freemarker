@@ -6,7 +6,8 @@
 	<parent>
 		<groupId>org.jboss.tools</groupId>
 		<artifactId>parent</artifactId>
-		<version>4.5.3.Final-SNAPSHOT</version>
+    <!-- JBoss Tools 4.12.0.Final-SNAPSHOT was released for Eclipse 2019-06 (Eclipse version 4.12) -->
+		<version>4.12.0.Final-SNAPSHOT</version>
 	</parent>
 	<artifactId>freemarker</artifactId>
 	<version>1.5.306-SNAPSHOT</version>

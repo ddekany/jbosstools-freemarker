@@ -2,7 +2,7 @@ target "Freemarker IDE Target Platform"
 
 with requirements, source, configurePhase
 
-location "http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.71.1.Final/REPO" {
+location "https://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.12.0.Final-SNAPSHOT/REPO" {
   org.apache.ant lazy
   org.eclipse.core.resources lazy
   org.eclipse.core.runtime lazy
