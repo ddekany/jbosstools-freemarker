@@ -362,6 +362,8 @@ public enum BuiltInInfo {
     XHTML("xhtml", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsEncoding$xmlBI */
     XML("xml", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsMisc$evalJsonBI */
+    EVAL_JSON("eval_json", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
     ;
     
     private final String snakeCaseName;
