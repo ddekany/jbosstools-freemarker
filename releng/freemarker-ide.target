@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Freemarker IDE Target Platform" sequenceNumber="1624306656">
+<target name="Freemarker IDE Target Platform" sequenceNumber="1625847424">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.apache.ant" version="0.0.0"/>
@@ -23,14 +23,11 @@
       <unit id="org.junit" version="0.0.0"/>
       <unit id="org.eclipse.ui.workbench" version="0.0.0"/>
       <unit id="org.eclipse.ui.ide.application" version="0.0.0"/>
-      <repository location="https://download.eclipse.org/releases/2021-06"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
-      <repository location="https://download.eclipse.org/eclipse/updates/4.20"/>
+      <repository location="http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.71.1.Final/REPO"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.jboss.tools.tests" version="0.0.0"/>
-      <repository location="https://download.jboss.org/jbosstools/photon/snapshots/builds/jbosstools-base_master/latest/all/repo"/>
+      <repository location="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-base_master/latest/all/repo"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.jboss.tools.locus.mockito" version="0.0.0"/>

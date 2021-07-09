@@ -2,7 +2,7 @@ target "Freemarker IDE Target Platform"
 
 with requirements, source, configurePhase
 
-location "https://download.eclipse.org/releases/2021-06" {
+location "http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.71.1.Final/REPO" {
   org.apache.ant lazy
   org.eclipse.core.resources lazy
   org.eclipse.core.runtime lazy
@@ -24,10 +24,7 @@ location "https://download.eclipse.org/releases/2021-06" {
   org.eclipse.ui.ide.application lazy
 }
 
-location "https://download.eclipse.org/eclipse/updates/4.20" {
-}
-
-location "https://download.jboss.org/jbosstools/photon/snapshots/builds/jbosstools-base_master/latest/all/repo" {
+location "http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-base_master/latest/all/repo" {
   org.jboss.tools.tests lazy
 }
 
