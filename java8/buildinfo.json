@@ -1,0 +1,31 @@
+{
+    "timestamp" : 1625875388730,
+    "revision" : {
+        "HEAD" : "ae5aa3aaaf304dd3db5cb1bd0f8157011670c36c",
+        "currentBranch" : "refs/heads/master",
+        "knownReferences" : [{
+            "name" : "origin",
+            "url" : "https://github.com/ddekany/jbosstools-freemarker",
+            "ref" : "master"
+        }]
+    },
+    "properties" : {
+        "TARGET_PLATFORM_VERSION_MAXIMUM" : "null",
+        "java.version" : "1.8.0_292",
+        "user.dir" : "/home/runner/work/jbosstools-freemarker/jbosstools-freemarker",
+        "os.arch" : "amd64",
+        "RELEASE" : "null",
+        "BUILD_ALIAS" : "null",
+        "JOB_NAME" : "null",
+        "os.version" : "5.8.0-1036-azure",
+        "BUILD_NUMBER" : "null",
+        "TARGET_PLATFORM_VERSION" : "null",
+        "NODE_NAME" : "null",
+        "HOSTNAME" : "fv-az81-533",
+        "java.vendor" : "AdoptOpenJDK",
+        "os.name" : "Linux",
+        "ZIPSUFFIX" : "null",
+        "WORKSPACE" : "/home/runner/work/jbosstools-freemarker/jbosstools-freemarker"
+    },
+    "upstream" : {"http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-base_master/latest/all/repo" : "Build info file not accessible: Parser error"}
+}
