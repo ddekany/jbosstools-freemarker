@@ -26,5 +26,5 @@ jobs:
       with:
         branch: gh-pages
         folder: site/target/repository
-        target-folder: java8
+        target-folder: updates
 
