@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.jboss.tools</groupId>
 		<artifactId>freemarker</artifactId>
-		<version>1.5.306-SNAPSHOT</version>
+		<version>1.5.306</version>
 	</parent>
 	<groupId>org.jboss.tools.freemarker</groupId>
 	<artifactId>freemarker.site</artifactId>
