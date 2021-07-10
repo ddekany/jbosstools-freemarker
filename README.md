@@ -8,7 +8,7 @@ This is an Eclipse pluging that provides an editor for [Apache FreeMarker](https
 
 If you are looking at the fork of user ddekany, then the last released version should be
 [on the Eclipse Marketplace here](https://marketplace.eclipse.org/content/freemarker-ide),
-and also on [the Eclipse update site on Bintray](https://dl.bintray.com/freemarker/freemarker-ide/). If Bintray is unavailable, the plugin can be downloaded from the [Github release page](https://github.com/ddekany/jbosstools-freemarker/releases).
+or directly from [the update site](https://ddekany.github.io/jbosstools-freemarker/updates/). If these are unavailable for some reason, the plugin can be downloaded from the [Github release page](https://github.com/ddekany/jbosstools-freemarker/releases).
 
 ## Building
 
@@ -68,9 +68,6 @@ git commit -m "Updated version for release"
 # Build with the release version
 mvn clean verify
 
-# Upload to Bintray
-version=$releaseVersion ./bintray-uploader/upload.sh
-
 git tag -a "v${releaseVersion}" -m "Release"
 git push --follow-tags
 
@@ -89,11 +86,13 @@ You should also add the new version on the Eclipse Marketplace, [here](https://m
 
 ## Change log (version history)
 
-### (current)
+### 15.0.306
 
-Date of release: (to be changed)
+Date of release: 2020-07-10
 
 - Updated embedded FreeMarker to 2.3.31
+- Changed update site to https://ddekany.github.io/jbosstools-freemarker/updates, as Bintray was retired by JForg. Added GitHub actions to do build and publishing.
+- Lowest supported (tested) Eclipse version was increased to Eclipse 2019-06 (4.12)
 
 ### 15.0.305
 
