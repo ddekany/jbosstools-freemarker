@@ -10,7 +10,7 @@
 		<version>4.12.0.Final-SNAPSHOT</version>
 	</parent>
 	<artifactId>freemarker</artifactId>
-	<version>1.5.306</version>
+	<version>1.5.307-SNAPSHOT</version>
 	<name>jbosstools-freemarker</name>
 	<packaging>pom</packaging>
 	<properties>
