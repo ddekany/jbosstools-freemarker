@@ -16,6 +16,7 @@ import org.junit.Assert;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import freemarker.template.Version;
 
 public class FreemarkerTestUtils {
 
@@ -43,7 +44,7 @@ public class FreemarkerTestUtils {
 		String propsFileName = tempateFileName + ".model.properties"; //$NON-NLS-1$
 		Properties model = loadModel(new File(templateDirectory, propsFileName));
 		String fileNameExpected = tempateFileName + ".expected.txt"; //$NON-NLS-1$
-		Configuration config = new Configuration(Configuration.getVersion()); // Use the last (strictest) version
+		Configuration config = new Configuration(new Version(Configuration.getVersion().toString())); // Use the last (strictest) version
 		config.setDirectoryForTemplateLoading(templateDirectory);
 		Template temp = config.getTemplate(tempateFileName);
 		StringWriter found = new StringWriter();

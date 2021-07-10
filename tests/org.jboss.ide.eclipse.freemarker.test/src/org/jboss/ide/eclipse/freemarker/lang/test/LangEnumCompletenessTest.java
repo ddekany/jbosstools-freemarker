@@ -19,6 +19,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import freemarker.template.Configuration;
+import freemarker.template.Version;
 import junit.framework.TestCase;
 
 public class LangEnumCompletenessTest extends TestCase {
@@ -28,7 +29,7 @@ public class LangEnumCompletenessTest extends TestCase {
 	}
 
 	public void testDirectives() {
-		Configuration cfg = new Configuration(Configuration.getVersion());
+		Configuration cfg = new Configuration(new Version(Configuration.getVersion().toString()));
 		Set<String> expectedNames = cfg.getSupportedBuiltInDirectiveNames(Configuration.LEGACY_NAMING_CONVENTION);
 
 		Set<String> actualNames = new HashSet<String>();
@@ -40,7 +41,7 @@ public class LangEnumCompletenessTest extends TestCase {
 	}
 
 	public void testBuiltInNames() {
-		Configuration cfg = new Configuration(Configuration.getVersion());
+		Configuration cfg = new Configuration(new Version(Configuration.getVersion().toString()));
 		Set<String> expectedNames = cfg.getSupportedBuiltInNames(Configuration.LEGACY_NAMING_CONVENTION);
 
 		Set<String> actualNames = new HashSet<String>();

@@ -48,6 +48,7 @@ import org.jboss.ide.eclipse.freemarker.model.ItemSet;
 import freemarker.core.ParseException;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import freemarker.template.Version;
 
 /**
  * A {@link IReconcilingStrategy} that triggers re-build of {@link ItemSet} in
@@ -118,7 +119,7 @@ public class ReconcilingStrategy implements IReconcilingStrategy,
 	 */
 	private ParseException checkTemplateSyntax() {
 		if (fmConfiguration == null) {
-			fmConfiguration = new Configuration(Configuration.getVersion());
+			fmConfiguration = new Configuration(new Version(Configuration.getVersion().toString()));
 			fmConfiguration.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
 			fmConfiguration.setTabSize(1);
 		}
