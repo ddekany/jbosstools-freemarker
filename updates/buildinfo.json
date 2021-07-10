@@ -1,0 +1,60 @@
+{
+    "timestamp" : 1625877884317,
+    "revision" : {
+        "HEAD" : "edfa2b469de45bb9e889b139dc16c091e380412b",
+        "currentBranch" : "refs/heads/master",
+        "knownReferences" : [{
+            "name" : "origin",
+            "url" : "https://github.com/ddekany/jbosstools-freemarker",
+            "ref" : "master"
+        }]
+    },
+    "properties" : {
+        "TARGET_PLATFORM_VERSION_MAXIMUM" : "null",
+        "java.version" : "1.8.0_292",
+        "user.dir" : "/home/runner/work/jbosstools-freemarker/jbosstools-freemarker",
+        "os.arch" : "amd64",
+        "RELEASE" : "null",
+        "BUILD_ALIAS" : "null",
+        "JOB_NAME" : "null",
+        "os.version" : "5.8.0-1036-azure",
+        "BUILD_NUMBER" : "null",
+        "TARGET_PLATFORM_VERSION" : "null",
+        "NODE_NAME" : "null",
+        "HOSTNAME" : "fv-az74-51",
+        "java.vendor" : "AdoptOpenJDK",
+        "os.name" : "Linux",
+        "ZIPSUFFIX" : "null",
+        "WORKSPACE" : "/home/runner/work/jbosstools-freemarker/jbosstools-freemarker"
+    },
+    "upstream" : {"https://download.jboss.org/jbosstools/photon/snapshots/builds/jbosstools-base_master/latest/all/repo" : {
+        "timestamp" : 1624891828763,
+        "revision" : {
+            "HEAD" : "a8d4c03cad37df8028e00c0f1e7e1ea6cf5473ce",
+            "currentBranch" : "HEAD",
+            "knownReferences" : [{
+                "name" : "origin",
+                "url" : "git://github.com/jbosstools/jbosstools-base.git",
+                "ref" : "master"
+            }]
+        },
+        "properties" : {
+            "TARGET_PLATFORM_VERSION_MAXIMUM" : "null",
+            "java.version" : "11.0.11",
+            "user.dir" : "/jenkins/jbosstools-base_master",
+            "os.arch" : "amd64",
+            "RELEASE" : "null",
+            "BUILD_ALIAS" : "null",
+            "JOB_NAME" : "jbosstools-base_master",
+            "os.version" : "3.10.0-1127.el7.x86_64",
+            "BUILD_NUMBER" : "153",
+            "TARGET_PLATFORM_VERSION" : "null",
+            "NODE_NAME" : "null",
+            "HOSTNAME" : "rhel7-releng-4613",
+            "java.vendor" : "Red Hat, Inc.",
+            "os.name" : "Linux",
+            "ZIPSUFFIX" : "null",
+            "WORKSPACE" : "/jenkins/jbosstools-base_master"
+        }
+    }}
+}

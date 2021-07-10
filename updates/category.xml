@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+	<description>To install these features, point Eclipse at this site.</description>
+	<category-def label="FreeMarker IDE" name="freemarker.ide">
+		<description>FreeMarker IDE - A maintenance fork of the discontinued FreeMarker plugin in JBoss Tools</description>
+	</category-def>
+	<feature id="org.jboss.ide.eclipse.freemarker.feature" url="features/org.jboss.ide.eclipse.freemarker.feature_1.5.306.v20210709-2349.jar" version="1.5.306.v20210709-2349"><category name="freemarker.ide"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.test.feature" url="features/org.jboss.ide.eclipse.freemarker.test.feature_1.5.306.v20200307-1917.jar" version="1.5.306.v20200307-1917"><category name="freemarker.ide"/></feature>
+	<!-- Sources -->
+	<feature id="org.jboss.ide.eclipse.freemarker.feature.source" url="features/org.jboss.ide.eclipse.freemarker.feature.source_1.5.306.v20210709-2349.jar" version="1.5.306.v20210709-2349"><category name="freemarker.ide"/></feature>
+	<feature id="org.jboss.ide.eclipse.freemarker.test.feature.source" url="features/org.jboss.ide.eclipse.freemarker.test.feature.source_1.5.306.v20200307-1917.jar" version="1.5.306.v20200307-1917"><category name="freemarker.ide"/></feature>
+</site>
