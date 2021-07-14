@@ -67,7 +67,11 @@ git commit -m "Updated version for release"
 
 # Build with the release version
 mvn clean verify
+```
 
+Now run the "Deploy P2 Repository to GitHub Pages" GitHub action to update the Eclipse update site. After that's succeeded:
+
+```
 git tag -a "v${releaseVersion}" -m "Release"
 git push --follow-tags
 
