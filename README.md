@@ -88,7 +88,7 @@ You should also add the new version on the Eclipse Marketplace, [here](https://m
 
 ### 15.0.306
 
-Date of release: 2020-07-10
+Date of release: 2021-07-10
 
 - Updated embedded FreeMarker to 2.3.31
 - Changed update site to https://ddekany.github.io/jbosstools-freemarker/updates, as Bintray was retired by JForg. Added GitHub actions to do build and publishing.
