@@ -26,6 +26,12 @@ public enum BuiltInInfo {
     BYTE("byte", FTLType.NUMBER, FTLType.NUMBER, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForMultipleTypes$cBI */
     C("c", new FTLType[] { FTLType.NUMBER, FTLType.BOOLEAN }, FTLType.STRING, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForMultipleTypes$cnBI */
+    CN("cn", new FTLType[] { FTLType.NUMBER, FTLType.BOOLEAN }, FTLType.STRING, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsBasic$c_upper_caseBI */
+    C_UPPER_CASE("c_upper_case", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsBasic$c_lower_caseBI */
+    C_LOWER_CASE("c_lower_case", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsBasic$cap_firstBI */
     CAP_FIRST("capFirst", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsBasic$capitalizeBI */
@@ -64,6 +70,8 @@ public enum BuiltInInfo {
     ESC("esc", new FTLType[] { FTLType.STRING, FTLType.MARKUP_OUTPUT }, FTLType.MARKUP_OUTPUT, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsMisc$evalBI */
     EVAL("eval", FTLType.STRING, FTLType.ANY, false), //$NON-NLS-1$
+    /** {@link freemarker.core.BuiltInsForStringsMisc$evalJsonBI */
+    EVAL_JSON("eval", FTLType.STRING, FTLType.ANY, false), //$NON-NLS-1$
     /** {@link freemarker.core.ExistenceBuiltins$existsBI */
     EXISTS("exists", new FTLType[] { FTLType.ANY }, FTLType.BOOLEAN, false, true), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForSequences$filterBI */
@@ -361,9 +369,7 @@ public enum BuiltInInfo {
     /** {@link freemarker.core.BuiltInsForStringsEncoding$xhtmlBI */
     XHTML("xhtml", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
     /** {@link freemarker.core.BuiltInsForStringsEncoding$xmlBI */
-    XML("xml", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
-    /** {@link freemarker.core.BuiltInsForStringsMisc$evalJsonBI */
-    EVAL_JSON("eval_json", FTLType.STRING, FTLType.STRING, false), //$NON-NLS-1$
+    XML("xml", FTLType.STRING, FTLType.STRING, false) //$NON-NLS-1$
     ;
     
     private final String snakeCaseName;
