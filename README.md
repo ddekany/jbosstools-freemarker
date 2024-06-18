@@ -67,14 +67,27 @@ git commit -m "Updated version for release"
 
 # Build with the release version
 mvn clean verify
+git push
 ```
 
-Now run the "Deploy P2 Repository to GitHub Pages" GitHub action to update the Eclipse update site. After that's succeeded:
+Now run the "Deploy P2 Repository to GitHub Pages" GitHub action to update the Eclipse update site.
+After that's succeeded, check the contents of [the Eclipse update site](https://ddekany.github.io/jbosstools-freemarker/updates/).
+If it looks good, add the new version on the Eclipse Marketplace, [here](https://marketplace.eclipse.org/content/freemarker-ide).
+
+
+After that, do the tagging:
 
 ```
 git tag -a "v${releaseVersion}" -m "Release"
 git push --follow-tags
+```
 
+Now find the tag on the Github website, and publish a release from it (there should be a such option).
+You should attach `site/target/freemarker.site-${releaseVersion}.zip` to the release on GitHub.
+
+Next, switch to the new development version:
+
+```
 find -type f -name "pom.xml" -not -path '*/target/*' -exec sed -Ei 's/'${releaseVersion//./\\.}'/'$nextVersion'-SNAPSHOT/g' {} \;
 find -type f \( -name "MANIFEST.MF" -o -name "feature.xml" -o -name "category.xml" \) -not -path '*/target/*' -exec sed -Ei 's/'${releaseVersion//./\\.}'/'$nextVersion'.qualifier/g' {} \;
 
@@ -82,10 +95,6 @@ git add .
 git commit -m "Updated version for development"
 git push
 ```
-
-You should attach `site/target/freemarker.site-${releaseVersion}.zip` to the release on GitHub.
-
-You should also add the new version on the Eclipse Marketplace, [here](https://marketplace.eclipse.org/content/freemarker-ide).
 
 
 ## Change log (version history)
