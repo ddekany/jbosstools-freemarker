@@ -90,13 +90,13 @@ You should also add the new version on the Eclipse Marketplace, [here](https://m
 
 ## Change log (version history)
 
-### 15.0.307
+### 1.5.307
 
 Date of release: 2024-06-19
 
 - Updated embedded FreeMarker to 2.3.33
 
-### 15.0.306
+### 1.5.306
 
 Date of release: 2021-07-10
 
@@ -104,13 +104,13 @@ Date of release: 2021-07-10
 - Changed update site to https://ddekany.github.io/jbosstools-freemarker/updates, as Bintray was retired by JForg. Added GitHub actions to do build and publishing.
 - Lowest supported (tested) Eclipse version was increased to Eclipse 2019-06 (4.12)
 
-### 15.0.305
+### 1.5.305
 
 Date of release: 2020-03-07
 
 - Updated embedded FreeMarker to 2.3.30
 
-### 15.0.304
+### 1.5.304
 
 Date of release: 2019-09-01
 
@@ -124,7 +124,7 @@ Date of release: 2019-09-01
   - For properties/methods with primitive return value the built-in completion proposals weren't filtered by left hand operand type.
   - When the left hand operand of a built-ins was a boolean, all built-ins were proposed, instead of just the boolean built-ins.
 
-### 15.0.303
+### 1.5.303
 
 Date of release: 2019-08-23
 
