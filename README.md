@@ -140,3 +140,7 @@ Date of release: 2019-08-23
 - Updated embedded FreeMarker to 2.3.29
 - Created P2 repo on Bintray, added shell script and description to help the process
 - Created product on Eclipse Market place for this fork
+
+<a href="http://with-eclipse.github.io/" target="_blank">
+<img alt="with-Eclipse logo" src="http://with-eclipse.github.io/with-eclipse-0.jpg" />
+</a>
